@@ -52,7 +52,7 @@ class SquirrelManager(models.Manager):
         except Exception as e:
             print(e)
         else:
-            squirrel.save()
+            return squirrel.save()
 
 
 class Squirrel(models.Model):
@@ -92,3 +92,17 @@ class Squirrel(models.Model):
     BB = models.IntegerField(verbose_name='Borough Boundaries', null=True)
     CCD = models.IntegerField(verbose_name='City Council Districts', null=True)
     PP = models.IntegerField(verbose_name='Police Precincts', null=True)
+
+    objects = SquirrelManager()
+
+    def __str__(self):
+        return ','.join(
+            [to_string(self.X), to_string(self.Y), to_string(self.USID), to_string(self.Hectare), to_string(self.Shift),
+             to_string(self.Date), to_string(self.HSN), to_string(self.Age), to_string(self.PFC), to_string(self.HFC),
+             to_string(self.CPHC), to_string(self.CN), to_string(self.Location), to_string(self.AGSM), to_string(self.SL),
+             to_string(self.Running), to_string(self.Chasing), to_string(self.Climbing), to_string(self.Eating),
+             to_string(self.Foraging), to_string(self.OA), to_string(self.Kuks), to_string(self.Quaas),
+             to_string(self.Moans), to_string(self.TF), to_string(self.TT), to_string(self.Approaches),
+             to_string(self.Indifferent), to_string(self.RF), to_string(self.OI), to_string(self.LL), to_string(self.Zip),
+             to_string(self.CD), to_string(self.BB), to_string(self.CCD), to_string(self.PP)])
+
