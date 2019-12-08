@@ -22,5 +22,9 @@ import sightings.views as sightings_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('map', sightings_views.map),
+    path('map', sightings_views.map, name='map'),
+    path('sightings', sightings_views.sighting_list, name='sighting_list'),
+    path('sightings/add', sightings_views.sighting_add, name='sighting_add'),
+    path('sightings/stats', sightings_views.sighting_stats, name='sighting_stats'),
+    path('sightings/<unique_squirrel_id>', sightings_views.sighting_update, name='sighting_detail'),
 ]
