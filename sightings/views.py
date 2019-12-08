@@ -39,6 +39,12 @@ def sighting_update(request, unique_squirrel_id):
     return render(request, 'sighting_update.html', {'form': form, 'unique_squirrel_id': unique_squirrel_id})
 
 
+def sighting_delete(request, unique_squirrel_id):
+    sighting = get_object_or_404(Squirrel, USID=unique_squirrel_id)
+    sighting.delete()
+    return redirect('sighting_list')
+
+
 def sighting_stats(request):
     lst = []
     lst.append(Squirrel.objects.count())

@@ -8,8 +8,27 @@
 </head>
 <body>
     <h4><a href="{% url 'sighting_add' %}">Add some squirrel data</a></h4>
-    {% for sighting in sightings %}
-    {{ sighting }}
-    {% endfor %}
+    <table border="1">
+        <tr>
+            <th>Data</th>
+            <th colspan="2">Options</th>
+        </tr>
+        {% for sighting in sightings %}
+        <tr>
+            <td>{{ sighting }}</td>
+            <td>
+                <a href="{% url 'sighting_update' unique_squirrel_id=sighting.USID %}">update</a>
+            </td>
+            <td>
+                <a href="{% url 'sighting_delete' unique_squirrel_id=sighting.USID %}">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
 </body>
 </html>
