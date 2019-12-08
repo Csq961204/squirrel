@@ -56,11 +56,14 @@ def sighting_stats(request):
     lst.append(Squirrel.objects.filter(PFC='Cinnamon').count())
     lst.append(Squirrel.objects.filter(Location='Ground Plane').count())
     lst.append(Squirrel.objects.filter(Location='Above Ground').count())
-    string = 'The number of sightings is {}'.format(
-        lst[0]) + '\n' + 'The number of Adult Squirrel is {}, and the number of Juvenile Squirrel is {}'.format(
-        lst[1], lst[2]) + '\n' + "The center of all squirrels are {},{}".format(lst[3], lst[
-        4]) + '\n' + "There are {:2f} percents of Squirrel with grey primary fur color, and the other {:2f} percents are connamon color".format(
-        lst[5] * 100 / (lst[5] + lst[6]), lst[6] * 100 / (lst[5] + lst[
-            6])) + '\n' + "There are {:2f} percents of Squirrel above ground, and the other {:2f} are on the ground plane".format(
-        lst[8] * 100 / (lst[7] + lst[8]), lst[7] * 100 / (lst[7] + lst[8]))
-    return render(request, 'sighting_stats.html', {'text': string})
+    lines = [
+        'The number of sightings is {}'.format(lst[0]),
+        'The number of Adult Squirrel is {}, and the number of Juvenile Squirrel is {}'.format(
+        lst[1], lst[2]),
+        "The center of all squirrels are {},{}".format(lst[3], lst[4]),
+        "There are {:2f} percents of Squirrel with grey primary fur color, and the other {:2f} percents are connamon color".format(
+        lst[5] * 100 / (lst[5] + lst[6]), lst[6] * 100 / (lst[5] + lst[6])),
+        "There are {:2f} percents of Squirrel above ground, and the other {:2f} are on the ground plane".format(
+        lst[8] * 100 / (lst[7] + lst[8]), lst[7] * 100 / (lst[7] + lst[8])),
+    ]
+    return render(request, 'sighting_stats.html', {'lines': lines})
