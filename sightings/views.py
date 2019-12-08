@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Squirrel
+
+
+def map(request):
+    sqs = Squirrel.objects.all()
+    return render(request, 'map.html', {'sqs': [{'x': sq.X, 'y': sq.Y} for sq in sqs]})

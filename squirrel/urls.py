@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import sightings.views as sightings_views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('map', sightings_views.map),
 ]
