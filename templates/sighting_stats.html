@@ -8,6 +8,8 @@
 </head>
 <body>
     <h3>The following are the statistics of sightings:</h3>
-    {{ text }}
+    {% for line in lines %}
+    {{ line }}
+    {% endfor %}
 </body>
 </html>
