@@ -29,7 +29,7 @@ def sighting_add(request):
 
 
 def sighting_update(request, unique_squirrel_id):
-    sighting = get_object_or_404(Squirrel, USID=unique_squirrel_id)
+    sighting = Squirrel.objects.filter(USID=unique_squirrel_id).first()
     if request.method == 'POST':
         form = SquirrelForm(request.POST, instance=sighting)
         if form.is_valid():
