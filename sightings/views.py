@@ -34,13 +34,16 @@ def sighting_update(request, unique_squirrel_id):
         form = SquirrelForm(request.POST, instance=sighting)
         if form.is_valid():
             form.save()
+            sightings = Squirrel.objects.filter(USID=unique_squirrel_id)
+            if sightings.count() > 1:
+                sightings.first().delete()
             return redirect('sighting_list')
     form = SquirrelForm(instance=sighting)
     return render(request, 'sighting_update.html', {'form': form, 'unique_squirrel_id': unique_squirrel_id})
 
 
 def sighting_delete(request, unique_squirrel_id):
-    sighting = get_object_or_404(Squirrel, USID=unique_squirrel_id)
+    sighting = Squirrel.objects.filter(USID=unique_squirrel_id).first()
     sighting.delete()
     return redirect('sighting_list')
 
