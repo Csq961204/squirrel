@@ -30,7 +30,6 @@
         subdomains: ['a', 'b', 'c']
         }).addTo(map);
         "{% for sq in sqs %}"
-        console.log("{{ sq.y }}")
         L.marker(["{{ sq.y }}", "{{ sq.x }}"]).addTo(map);
         "{% endfor %}"
     </script>
