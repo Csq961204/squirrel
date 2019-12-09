@@ -27,4 +27,6 @@ Name:Shenqi Chen
 
 Documentation
 -------------------------------
-git@github.com:Csq961204/squirrel.git
+https://speedy-cargo-255500.appspot.com/
+https://github.com/Csq961204/squirrel.git
+
